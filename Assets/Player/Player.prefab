@@ -163,7 +163,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4710965015217051097, guid: aa99dafcbb4c14d439cb39ea78bf82d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -340,6 +340,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   landingCheckRadius: 0.4
+  playerVisualRenderer: {fileID: 6285939251407841718}
+  groundSortingLayer: Default
+  airSortingLayer: AirActors
 --- !u!50 &6809282786680153301
 Rigidbody2D:
   serializedVersion: 5

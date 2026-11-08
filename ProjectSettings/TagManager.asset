@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
   - name: Deep Background
     uniqueID: 699283717
     locked: 0
@@ -50,10 +53,10 @@ TagManager:
   - name: Foreground
     uniqueID: 648793869
     locked: 0
-  - name: 
+  - name: AirActors
     uniqueID: 3443532661
     locked: 0
-  - name: 
+  - name: AirObstacles
     uniqueID: 1195131321
     locked: 0
   - name: 
@@ -64,9 +67,6 @@ TagManager:
     locked: 0
   - name: 
     uniqueID: 2893534511
-    locked: 0
-  - name: Default
-    uniqueID: 0
     locked: 0
   m_RenderingLayers:
   - Default

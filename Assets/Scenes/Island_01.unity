@@ -312,6 +312,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1129468390}
     m_Modifications:
+    - target: {fileID: 6285939251407841718, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8190266762582320439, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -483,7 +487,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.36302152, g: 0.35504705, b: 0.40392157, a: 1}
   m_FlipX: 0
@@ -1062,7 +1066,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.71599996, g: 0.5318299, b: 0.25418, a: 1}
   m_FlipX: 0

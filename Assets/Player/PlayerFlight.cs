@@ -11,6 +11,12 @@ public class PlayerFlight : MonoBehaviour
     [SerializeField] private LayerMask groundObstacleMask;
     [SerializeField] private float landingCheckRadius = 0.4f;
 
+    [Header("Visual Sorting")]
+    [SerializeField] private SpriteRenderer playerVisualRenderer;
+
+    [SerializeField] private string groundSortingLayer = "Default";
+    [SerializeField] private string airSortingLayer = "AirActors";
+
     private int groundLayer;
     private int airLayer;
 
@@ -31,6 +37,8 @@ public class PlayerFlight : MonoBehaviour
 
         IsFlying = false;
         gameObject.layer = groundLayer;
+
+        UpdateVisualSorting();
     }
 
     private void OnEnable()
@@ -63,10 +71,24 @@ public class PlayerFlight : MonoBehaviour
         }
     }
 
+    private void UpdateVisualSorting()
+    {
+        if (playerVisualRenderer == null)
+            return;
+
+        playerVisualRenderer.sortingLayerName =
+            IsFlying ? airSortingLayer : groundSortingLayer;
+
+        playerVisualRenderer.sortingOrder =
+            IsFlying ? 0 : 1;
+    }
+
     private void TakeOff()
     {
         IsFlying = true;
         gameObject.layer = airLayer;
+
+        UpdateVisualSorting();
     }
 
     private void TryLand()
@@ -94,5 +116,7 @@ public class PlayerFlight : MonoBehaviour
 
         IsFlying = false;
         gameObject.layer = groundLayer;
+
+        UpdateVisualSorting();
     }
 }
