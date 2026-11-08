@@ -12,6 +12,8 @@ public class SpikesEnemy : Enemy
     private Transform playerTransform;
     private float attackTimer;
 
+    private PlayerFlight playerFlight;
+
     protected override void Start()
     {
         base.Start();
@@ -21,13 +23,20 @@ public class SpikesEnemy : Enemy
         if (player != null)
         {
             playerTransform = player.transform;
+            playerFlight = player.GetComponent<PlayerFlight>();
         }
-
     }
 
     void Update()
     {
         if (playerTransform == null) return;
+
+        if (playerFlight != null && !playerFlight.IsFlying)
+        {
+            attackTimer = 0f;
+
+            return;
+        }
 
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
 

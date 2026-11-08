@@ -19,11 +19,15 @@ public class Spike : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Player>(out Player player))
-        {
-            GameDebugLogger.Log(gameObject.name, $"colisionó con <b>{collision.gameObject.name}</b>");
-            player.TakeDamage(damage);
-            Destroy(gameObject);
-        }
+        if (!collision.TryGetComponent<Player>(out Player player)) return;
+
+        PlayerFlight playerFlight = player.GetComponent<PlayerFlight>();
+
+        if (playerFlight != null && !playerFlight.IsFlying) return;
+
+        GameDebugLogger.Log(gameObject.name, $"colisionó con <b>{collision.gameObject.name}</b>");
+
+        player.TakeDamage(damage);
+        Destroy(gameObject);
     }
 }

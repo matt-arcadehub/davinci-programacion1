@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float currentEnergy;
     [SerializeField] private float energyRegenerationRate = 0.1f;
     [SerializeField] private float moveSpeed = 7f;
+    private bool isDead;
 
     [Header("Attack Settings")]
     [SerializeField] private bool fireUnlocked = true;
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
     private float currentVisualHeight;
     private Vector3 initialVisualPosition;
     private Vector2 animDirection = Vector2.down;
+
+    public event System.Action Died;
 
     public void SetControlsLocked(bool isLocked)
     {
@@ -252,7 +255,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (damage <= 0f) return;
+        if (damage <= 0f || isDead) return;
 
         GameDebugLogger.LogDanger(gameObject.name, $"recibió {damage} de daño.");
 
@@ -299,7 +302,13 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        if (isDead) return;
+
+        isDead = true;
+
         GameDebugLogger.LogDanger(gameObject.name, "ha caído.");
+
+        Died?.Invoke();
         Destroy(gameObject);
     }
 }
