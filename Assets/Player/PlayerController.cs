@@ -49,6 +49,16 @@ public class Player : MonoBehaviour
     [SerializeField] private float flightVisualHeight = 0.5f;
     [SerializeField] private float flightTransitionSpeed = 2f;
 
+    [Header("Damage Feedback")]
+    [SerializeField, Range(1f, 15f)]
+    private float blinkFrequency = 6f;
+
+    [SerializeField, Range(0f, 1f)]
+    private float blinkAlpha = 0.35f;
+
+    private SpriteRenderer playerVisualRenderer;
+    private Color originalVisualColor;
+
     private PlayerFlight playerFlight;
     private float currentVisualHeight;
     private Vector3 initialVisualPosition;
@@ -94,6 +104,16 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerFlight = GetComponent<PlayerFlight>();
+
+        if (playerVisual != null)
+        {
+            playerVisualRenderer = playerVisual.GetComponent<SpriteRenderer>();
+
+            if (playerVisualRenderer != null)
+            {
+                originalVisualColor = playerVisualRenderer.color;
+            }
+        }
 
         if (animator == null)
         {
@@ -172,6 +192,7 @@ public class Player : MonoBehaviour
         }
 
         RegenerateEnergy();
+        UpdateDamageFeedback();
     }
 
     private void FixedUpdate()
@@ -276,6 +297,27 @@ public class Player : MonoBehaviour
         {
             Die();
         }
+    }
+
+    private void UpdateDamageFeedback()
+    {
+        if (playerVisualRenderer == null || invulnerabilityDuration <= 0f) return;
+
+        Color targetColor = originalVisualColor;
+
+        if (Time.time < invulnerableUntil)
+        {
+            float elapsedTime = Time.time - (invulnerableUntil - invulnerabilityDuration);
+
+            bool isDimmed = Mathf.FloorToInt(elapsedTime * blinkFrequency * 2f) % 2 == 0;
+
+            if (isDimmed)
+            {
+                targetColor.a *= blinkAlpha;
+            }
+        }
+
+        playerVisualRenderer.color = targetColor;
     }
 
     public void CollectEnergyOrb(float energyOrbAmount)
