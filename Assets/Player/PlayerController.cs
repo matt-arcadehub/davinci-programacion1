@@ -227,6 +227,8 @@ public class Player : MonoBehaviour
     {
         if (!fireUnlocked) return;
 
+        if (playerFlight != null && !playerFlight.IsFlying) return;
+
         if (currentEnergy < attackEnergyCost)
         {
             GameDebugLogger.LogWarning(gameObject.name, "no tiene suficiente energía para realizar esta acción.");

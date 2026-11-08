@@ -311,6 +311,7 @@ MonoBehaviour:
   currentEnergy: 0
   energyRegenerationRate: 0.1
   moveSpeed: 4
+  fireUnlocked: 0
   attackPrefabToSpawn: {fileID: 6118963331313577418, guid: eca445c29a21ebb4fb86ae66c082db13, type: 3}
   attackEnergyCost: 1
   playerVisual: {fileID: 5049629736586416486}
