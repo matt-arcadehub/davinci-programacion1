@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField] private InputActionReference moveAction;
     [SerializeField] private InputActionReference attackAction;
 
+    private Rigidbody2D rb;
+    private Vector2 moveInput;
+
     [Header("Attributes")]
     [SerializeField] private float maxHealth = 3f;
     [SerializeField] private float currentHealth;
@@ -56,6 +59,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         if (animator == null)
         {
             animator = GetComponentInChildren<Animator>(true);
@@ -90,11 +95,9 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Vector2 input = moveAction.action.ReadValue<Vector2>();
-        Vector3 movement = new Vector3(input.x, input.y, 0f).normalized * moveSpeed * Time.deltaTime;
-        transform.Translate(movement, Space.World);
+        moveInput = moveAction.action.ReadValue<Vector2>();
 
-        UpdateAnimationDirection(input);
+        UpdateAnimationDirection(moveInput);
 
         if (playerVisual != null)
         {
@@ -108,6 +111,13 @@ public class Player : MonoBehaviour
         }
 
         RegenerateEnergy();
+    }
+
+    private void FixedUpdate()
+    {
+        Vector2 direction = Vector2.ClampMagnitude(moveInput, 1f);
+
+        rb.linearVelocity = direction * moveSpeed;
     }
 
     private void UpdateAnimationDirection(Vector2 input)

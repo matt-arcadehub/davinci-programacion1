@@ -11,11 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerGround
+  - PlayerAir
+  - GroundObstacle
+  - AirObstacle
+  - LandingZone
   - 
   - 
   - 
@@ -49,6 +49,21 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 648793869
+    locked: 0
+  - name: 
+    uniqueID: 3443532661
+    locked: 0
+  - name: 
+    uniqueID: 1195131321
+    locked: 0
+  - name: 
+    uniqueID: 2522810519
+    locked: 0
+  - name: 
+    uniqueID: 1270593351
+    locked: 0
+  - name: 
+    uniqueID: 2893534511
     locked: 0
   - name: Default
     uniqueID: 0
