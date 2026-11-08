@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7966622777727794820
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4475962, y: 0.7348, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8190266762582320439}
@@ -73,10 +73,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 991543139
-  m_SortingLayer: -2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4710965015217051097, guid: aa99dafcbb4c14d439cb39ea78bf82d7, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.7058824}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,8 +161,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 991543139
-  m_SortingLayer: -2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -4710965015217051097, guid: aa99dafcbb4c14d439cb39ea78bf82d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 8190266762582320439}
   - component: {fileID: 5834322022560420655}
   - component: {fileID: 8612991450482928653}
+  - component: {fileID: 8158615545322750387}
   - component: {fileID: 6809282786680153301}
   - component: {fileID: 3415908620485481112}
   m_Layer: 0
@@ -275,9 +276,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 991543139
-  m_SortingLayer: -2
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4710965015217051097, guid: aa99dafcbb4c14d439cb39ea78bf82d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -317,6 +318,28 @@ MonoBehaviour:
   bobFrequency: 3
   bobAmplitude: 0.08
   shadowOffset: {x: 0, y: -4, z: 0}
+  flightVisualHeight: 0.5
+  flightTransitionSpeed: 2
+--- !u!114 &8158615545322750387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666581188133690044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd8aede17fde2e40ac42a127335289b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleFlightAction: {fileID: -8708968922004374736, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  landingZoneMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  groundObstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  landingCheckRadius: 0.4
 --- !u!50 &6809282786680153301
 Rigidbody2D:
   serializedVersion: 5

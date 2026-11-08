@@ -34,8 +34,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float bobAmplitude = 0.08f;
 
     [Header("Shadow Setup")]
-    [SerializeField] private Vector3 shadowOffset = new Vector3(0f, -0.6f, 0f);
+    [SerializeField] private Vector3 shadowOffset = new Vector3(0f, -0.35f, 0f);
 
+    [Header("Flight Visual")]
+    [SerializeField] private float flightVisualHeight = 0.5f;
+    [SerializeField] private float flightTransitionSpeed = 2f;
+
+    private PlayerFlight playerFlight;
+    private float currentVisualHeight;
     private Vector3 initialVisualPosition;
     private Vector2 animDirection = Vector2.down;
 
@@ -60,6 +66,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerFlight = GetComponent<PlayerFlight>();
 
         if (animator == null)
         {
@@ -69,12 +76,28 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        moveAction.action.Enable();
+        if (moveAction != null)
+        {
+            moveAction.action.Enable();
+        }
+
+        if (attackAction != null)
+        {
+            attackAction.action.Enable();
+        }
     }
 
     private void OnDisable()
     {
-        moveAction.action.Disable();
+        if (moveAction != null)
+        {
+            moveAction.action.Disable();
+        }
+
+        if (attackAction != null)
+        {
+            attackAction.action.Disable();
+        }
     }
 
     private void Start()
@@ -101,8 +124,19 @@ public class Player : MonoBehaviour
 
         if (playerVisual != null)
         {
-            float newY = initialVisualPosition.y + (Mathf.Sin(Time.time * bobFrequency) * bobAmplitude);
-            playerVisual.localPosition = new Vector3(initialVisualPosition.x, newY, initialVisualPosition.z);
+            float targetHeight = playerFlight != null && playerFlight.IsFlying
+                ? flightVisualHeight
+                : 0f;
+
+            currentVisualHeight = Mathf.MoveTowards(
+                currentVisualHeight,
+                targetHeight,
+                flightTransitionSpeed * Time.deltaTime
+            );
+
+            float bobOffset = Mathf.Sin(Time.time * bobFrequency) * bobAmplitude;
+
+            playerVisual.localPosition = initialVisualPosition + Vector3.up * (currentVisualHeight + bobOffset);
         }
 
         if (attackAction != null && attackAction.action.WasPressedThisFrame())
@@ -172,7 +206,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (currentEnergy - attackEnergyCost <= 0)
+        if (currentEnergy < attackEnergyCost)
         {
             GameDebugLogger.LogWarning(gameObject.name, "no tiene suficiente energía para realizar esta acción.");
 

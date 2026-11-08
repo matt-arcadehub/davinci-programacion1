@@ -312,14 +312,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1129468390}
     m_Modifications:
-    - target: {fileID: 6285939251407841718, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
-      propertyPath: m_SortingLayer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6285939251407841718, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8190266762582320439, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -367,10 +359,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8666581188133690044, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 1713768474}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
 --- !u!1 &538040925
 GameObject:
@@ -777,7 +766,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -826,6 +815,10 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -10}
   lookaheadDistance: 2.5
   lookaheadSpeed: 3
+  playerFlight: {fileID: 1713768474}
+  groundCameraSize: 3
+  flyingCameraSize: 4.5
+  zoomSpeed: 3
 --- !u!1 &1052527171
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,36 +1074,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1713768468 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8666581188133690044, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
-  m_PrefabInstance: {fileID: 477760789}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1713768473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8190266762582320439, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
   m_PrefabInstance: {fileID: 477760789}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1713768474
+--- !u!114 &1713768474 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 8158615545322750387, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
+  m_PrefabInstance: {fileID: 477760789}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713768468}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd8aede17fde2e40ac42a127335289b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleFlightAction: {fileID: -8708968922004374736, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  landingZoneMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  groundObstacleMask:
-    serializedVersion: 2
-    m_Bits: 256
-  landingCheckRadius: 0.4
 --- !u!1 &1774472878
 GameObject:
   m_ObjectHideFlags: 0

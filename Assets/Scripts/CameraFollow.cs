@@ -13,8 +13,20 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float lookaheadDistance = 2.5f;
     [SerializeField] private float lookaheadSpeed = 3f;
 
+    [Header("Flight Zoom")]
+    [SerializeField] private PlayerFlight playerFlight;
+    [SerializeField] private float groundCameraSize = 3f;
+    [SerializeField] private float flyingCameraSize = 4.5f;
+    [SerializeField] private float zoomSpeed = 3f;
+
+    private Camera cameraComponent;
     private Vector3 currentLookahead;
     private Vector3 lastTargetPosition;
+
+    private void Awake()
+    {
+        cameraComponent = GetComponent<Camera>();
+    }
 
     private void Start()
     {
@@ -40,5 +52,16 @@ public class CameraFollow : MonoBehaviour
         currentLookahead = Vector3.Lerp(currentLookahead, targetLookahead, lookaheadSpeed * Time.deltaTime);
         Vector3 desiredPosition = target.position + offset + currentLookahead;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+
+        float targetSize = playerFlight != null && playerFlight.IsFlying
+            ? flyingCameraSize
+            : groundCameraSize;
+        float t = 1f - Mathf.Exp(-zoomSpeed * Time.deltaTime);
+
+        cameraComponent.orthographicSize = Mathf.Lerp(
+            cameraComponent.orthographicSize,
+            targetSize,
+            t
+        );
     }
 }
