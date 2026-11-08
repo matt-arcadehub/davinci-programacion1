@@ -8,6 +8,8 @@ public class Brazier : MonoBehaviour
 
     public bool IsLit { get; private set; }
 
+    public event System.Action<Brazier> Lit;
+
     private void Awake()
     {
         IsLit = false;
@@ -32,6 +34,7 @@ public class Brazier : MonoBehaviour
         IsLit = true;
 
         UpdateVisuals();
+        Lit?.Invoke(this);
 
         Debug.Log($"{gameObject.name} encendido.");
     }

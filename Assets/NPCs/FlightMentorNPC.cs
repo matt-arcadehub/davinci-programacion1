@@ -9,7 +9,6 @@ public class FlightMentorNPC : Interactable
     [Header("Dialogue")]
     [SerializeField] private DialogueUI dialogueUI;
 
-    [Header("Dialogue")]
     [SerializeField, TextArea(3, 6)]
     private string firstDialogue =
         "¡Bienvenido, joven fénix! Tu misión es encender " +
@@ -21,6 +20,9 @@ public class FlightMentorNPC : Interactable
     private string repeatDialogue =
         "Recuerda: encuentra los tres braseros. " +
         "El siguiente guardián podrá enseñarte a usar el fuego.";
+
+    [Header("Mission")]
+    [SerializeField] private BrazierManager brazierManager;
 
     public override void Interact(PlayerInteractor interactor)
     {
@@ -34,6 +36,11 @@ public class FlightMentorNPC : Interactable
             if (firstInteraction)
             {
                 interactor.Flight.UnlockFlight();
+            }
+
+            if (brazierManager != null)
+            {
+                brazierManager.ShowObjective();
             }
         });
     }
