@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 5834322022560420655}
   - component: {fileID: 8612991450482928653}
   - component: {fileID: 8158615545322750387}
+  - component: {fileID: 2481642338191170365}
   - component: {fileID: 6809282786680153301}
   - component: {fileID: 3415908620485481112}
   m_Layer: 0
@@ -343,6 +344,19 @@ MonoBehaviour:
   playerVisualRenderer: {fileID: 6285939251407841718}
   groundSortingLayer: Default
   airSortingLayer: AirActors
+--- !u!114 &2481642338191170365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666581188133690044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a271af9371f64ae46862eb939ea8dce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactAction: {fileID: 1781555164194001046, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!50 &6809282786680153301
 Rigidbody2D:
   serializedVersion: 5

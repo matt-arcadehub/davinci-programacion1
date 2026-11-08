@@ -17,13 +17,16 @@ public class PlayerFlight : MonoBehaviour
     [SerializeField] private string groundSortingLayer = "Default";
     [SerializeField] private string airSortingLayer = "AirActors";
 
+    private Player player;
     private int groundLayer;
     private int airLayer;
 
+    public bool CanFly { get; private set; } = false;
     public bool IsFlying { get; private set; }
 
     private void Awake()
     {
+        player = GetComponent<Player>();
         groundLayer = LayerMask.NameToLayer("PlayerGround");
         airLayer = LayerMask.NameToLayer("PlayerAir");
 
@@ -59,6 +62,8 @@ public class PlayerFlight : MonoBehaviour
 
     private void Update()
     {
+        if (player.ControlsLocked) return;
+
         if (toggleFlightAction == null || !toggleFlightAction.action.WasPressedThisFrame()) return;
 
         if (!IsFlying)
@@ -70,6 +75,12 @@ public class PlayerFlight : MonoBehaviour
             TryLand();
         }
     }
+
+    public void UnlockFlight()
+    {
+        CanFly = true;
+    }
+
 
     private void UpdateVisualSorting()
     {
@@ -85,6 +96,8 @@ public class PlayerFlight : MonoBehaviour
 
     private void TakeOff()
     {
+        if (!CanFly) return;
+
         IsFlying = true;
         gameObject.layer = airLayer;
 

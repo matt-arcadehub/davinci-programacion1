@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
+    public bool ControlsLocked { get; private set; }
 
     [Header("Attributes")]
     [SerializeField] private float maxHealth = 3f;
@@ -44,6 +45,17 @@ public class Player : MonoBehaviour
     private float currentVisualHeight;
     private Vector3 initialVisualPosition;
     private Vector2 animDirection = Vector2.down;
+
+    public void SetControlsLocked(bool isLocked)
+    {
+        ControlsLocked = isLocked;
+
+        if (isLocked)
+        {
+            moveInput = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
 
     public float GetCurrentHealth()
     {
@@ -118,7 +130,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        moveInput = moveAction.action.ReadValue<Vector2>();
+        moveInput = ControlsLocked ? Vector2.zero : moveAction.action.ReadValue<Vector2>();
 
         UpdateAnimationDirection(moveInput);
 
@@ -139,7 +151,7 @@ public class Player : MonoBehaviour
             playerVisual.localPosition = initialVisualPosition + Vector3.up * (currentVisualHeight + bobOffset);
         }
 
-        if (attackAction != null && attackAction.action.WasPressedThisFrame())
+        if (!ControlsLocked && attackAction != null && attackAction.action.WasPressedThisFrame())
         {
             Attack();
         }
@@ -151,7 +163,7 @@ public class Player : MonoBehaviour
     {
         Vector2 direction = Vector2.ClampMagnitude(moveInput, 1f);
 
-        rb.linearVelocity = direction * moveSpeed;
+        rb.linearVelocity = ControlsLocked ? Vector2.zero : direction * moveSpeed;
     }
 
     private void UpdateAnimationDirection(Vector2 input)
