@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject attackPrefabToSpawn;
     [SerializeField] private float attackEnergyCost = 1f;
 
+    [Header("Damage Settings")]
+    [SerializeField, Min(0f)]
+    private float invulnerabilityDuration = 0f;
+    private float invulnerableUntil;
+
     [Header("Visual & Animation References")]
     [SerializeField] private Transform playerVisual;
     [SerializeField] private Animator animator;
@@ -257,17 +262,19 @@ public class Player : MonoBehaviour
     {
         if (damage <= 0f || isDead) return;
 
+        if (currentHealth <= 0f) return;
+
+        if (Time.time < invulnerableUntil) return;
+
+        currentHealth = Mathf.Max(0f, currentHealth - damage);
+
+        invulnerableUntil = Time.time + invulnerabilityDuration;
+
         GameDebugLogger.LogDanger(gameObject.name, $"recibió {damage} de daño.");
 
-        if (currentHealth - damage <= 0f)
+        if (currentHealth <= 0f)
         {
-            currentHealth = 0f;
-
             Die();
-        }
-        else
-        {
-            currentHealth -= damage;
         }
     }
 

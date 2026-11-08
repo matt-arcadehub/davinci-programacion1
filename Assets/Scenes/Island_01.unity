@@ -989,11 +989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8839800542760186482, guid: abdd93d1a1a337e4d9b3324d7f92d755, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.08
+      value: 18.6
       objectReference: {fileID: 0}
     - target: {fileID: 8839800542760186482, guid: abdd93d1a1a337e4d9b3324d7f92d755, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.07
+      value: -3.67
       objectReference: {fileID: 0}
     - target: {fileID: 8839800542760186482, guid: abdd93d1a1a337e4d9b3324d7f92d755, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1317,6 +1317,10 @@ PrefabInstance:
     - target: {fileID: 8190266762582320439, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612991450482928653, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
+      propertyPath: invulnerabilityDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8666581188133690044, guid: be514d6413b6b3549827dc58c998e0f1, type: 3}
       propertyPath: m_Name
