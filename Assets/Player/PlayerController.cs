@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
 
     [Header("Attack Settings")]
+    [SerializeField] private bool fireUnlocked = true;
+    public bool FireUnlocked => fireUnlocked;
     [SerializeField] private GameObject attackPrefabToSpawn;
     [SerializeField] private float attackEnergyCost = 1f;
 
@@ -55,6 +57,11 @@ public class Player : MonoBehaviour
             moveInput = Vector2.zero;
             rb.linearVelocity = Vector2.zero;
         }
+    }
+
+    public void UnlockFire()
+    {
+        fireUnlocked = true;
     }
 
     public float GetCurrentHealth()
@@ -218,6 +225,8 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
+        if (!fireUnlocked) return;
+
         if (currentEnergy < attackEnergyCost)
         {
             GameDebugLogger.LogWarning(gameObject.name, "no tiene suficiente energía para realizar esta acción.");

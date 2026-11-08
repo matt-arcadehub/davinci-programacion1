@@ -285,6 +285,7 @@ GameObject:
   - component: {fileID: 261098666}
   - component: {fileID: 261098665}
   - component: {fileID: 261098664}
+  - component: {fileID: 261098668}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -375,6 +376,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &261098668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261098663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8a148186beed84ab5edfd137deccd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 1733081393}
+  dialogueText: {fileID: 734256828}
+  understoodButton: {fileID: 1718957623}
 --- !u!1 &432496688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1444,14 +1460,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionPrompt: {fileID: 434563887}
-  dialoguePanel: {fileID: 1733081393}
-  dialogueText: {fileID: 734256828}
+  dialogueUI: {fileID: 261098668}
   firstDialogue: "\xA1Bienvenido, joven f\xE9nix! Tu misi\xF3n es encender los tres
     braseros de esta isla. Ahora puedes despegar y aterrizar. Busca al siguiente
     guardi\xE1n para aprender a usar el fuego."
   repeatDialogue: "Recuerda: encuentra los tres braseros. El siguiente guardi\xE1n
     podr\xE1 ense\xF1arte a usar el fuego."
-  understoodButton: {fileID: 1718957623}
 --- !u!212 &1498816991
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1776,9 +1790,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1498816990}
-        m_TargetAssemblyTypeName: FlightMentorNPC, Assembly-CSharp
-        m_MethodName: ConfirmDialogue
+      - m_Target: {fileID: 261098668}
+        m_TargetAssemblyTypeName: DialogueUI, Assembly-CSharp
+        m_MethodName: Confirm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

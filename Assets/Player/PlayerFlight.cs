@@ -81,7 +81,6 @@ public class PlayerFlight : MonoBehaviour
         CanFly = true;
     }
 
-
     private void UpdateVisualSorting()
     {
         if (playerVisualRenderer == null)

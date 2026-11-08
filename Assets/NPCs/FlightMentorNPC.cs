@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 
 public class FlightMentorNPC : Interactable
 {
-    [Header("Dialogue UI")]
-    [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TMP_Text dialogueText;
+    [Header("Dialogue")]
+    [SerializeField] private DialogueUI dialogueUI;
 
     [Header("Dialogue")]
     [SerializeField, TextArea(3, 6)]
@@ -23,88 +22,24 @@ public class FlightMentorNPC : Interactable
         "Recuerda: encuentra los tres braseros. " +
         "El siguiente guardián podrá enseñarte a usar el fuego.";
 
-    [SerializeField] private Button understoodButton;
-    private PlayerInteractor activeInteractor;
-    private bool unlockFlightOnConfirm;
-
     public override void Interact(PlayerInteractor interactor)
     {
-        if (activeInteractor != null) return;
+        if (dialogueUI == null) return;
 
-        if (dialoguePanel == null || dialogueText == null || understoodButton == null)
-        {
-            Debug.LogError("Faltan referencias de diálogo.");
+        bool firstInteraction = !interactor.Flight.CanFly;
 
-            return;
-        }
+        string message = firstInteraction ? firstDialogue : repeatDialogue;
 
-        activeInteractor = interactor;
-        unlockFlightOnConfirm = !interactor.Flight.CanFly;
-        dialogueText.text = unlockFlightOnConfirm ? firstDialogue : repeatDialogue;
-
-        interactor.SetDialogueOpen(true);
-
-        understoodButton.interactable = false;
-        dialoguePanel.SetActive(true);
-
-        StartCoroutine(FocusConfirmButton());
-    }
-
-    private IEnumerator FocusConfirmButton()
-    {
-        yield return null;
-
-        if (activeInteractor == null)
-        {
-            yield break;
-        }
-
-        understoodButton.interactable = true;
-
-        if (EventSystem.current != null)
-        {
-            EventSystem.current.SetSelectedGameObject(
-                understoodButton.gameObject
-            );
-        }
-    }
-
-    public void ConfirmDialogue()
-    {
-        if (activeInteractor == null) return;
-
-        if (unlockFlightOnConfirm)
-        {
-            activeInteractor.Flight.UnlockFlight();
-        }
-
-        CloseDialogue();
-    }
-
-    private void CloseDialogue()
-    {
-        if (dialoguePanel != null)
-        {
-            dialoguePanel.SetActive(false);
-        }
-
-        if (EventSystem.current != null)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-        }
-
-        if (activeInteractor != null)
-        {
-            activeInteractor.SetDialogueOpen(false);
-        }
-
-        activeInteractor = null;
-        unlockFlightOnConfirm = false;
+        dialogueUI.Show(interactor, message, () => {
+            if (firstInteraction)
+            {
+                interactor.Flight.UnlockFlight();
+            }
+        });
     }
 
     public override void OnExitRange()
     {
         SetPromptVisible(false);
-        CloseDialogue();
     }
 }
