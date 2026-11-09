@@ -4,9 +4,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Attributes")]
-    private float maxHealth = 3f;
-    private float currentHealth;
-    private int damage = 1;
+    [SerializeField] private float maxHealth = 3f;
+    [SerializeField] private float currentHealth;
+    [SerializeField] private int damage = 1;
 
     [Header("Drop Settings")]
     [SerializeField, Range(0f, 1f)] private float dropItemChance = 0.5f;
