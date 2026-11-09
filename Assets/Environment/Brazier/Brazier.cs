@@ -6,6 +6,9 @@ public class Brazier : MonoBehaviour
     [SerializeField] private GameObject unlitVisual;
     [SerializeField] private GameObject litVisual;
 
+    [Header("Audio")]
+    [SerializeField] private GameSfx gameSfx;
+
     public bool IsLit { get; private set; }
 
     public event System.Action<Brazier> Lit;
@@ -34,6 +37,12 @@ public class Brazier : MonoBehaviour
         IsLit = true;
 
         UpdateVisuals();
+
+        if (gameSfx != null)
+        {
+            gameSfx.PlayBrazierLit();
+        }
+
         Lit?.Invoke(this);
 
         Debug.Log($"{gameObject.name} encendido.");
