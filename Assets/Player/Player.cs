@@ -233,6 +233,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("MoveX", animDirection.x);
         animator.SetFloat("MoveY", animDirection.y);
         animator.SetBool("IsMoving", isMoving);
+        animator.SetBool("IsFlying", playerFlight != null && playerFlight.IsFlying);
     }
 
     private void RegenerateEnergy()
