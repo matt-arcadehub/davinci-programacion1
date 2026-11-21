@@ -55,9 +55,6 @@ public class Player : MonoBehaviour
     [SerializeField, Range(0f, 1f)]
     private float blinkAlpha = 0.35f;
 
-    [Header("Audio")]
-    [SerializeField] private GameSfx gameSfx;
-
     private SpriteRenderer playerVisualRenderer;
     private Color originalVisualColor;
 
@@ -281,10 +278,7 @@ public class Player : MonoBehaviour
 
         Instantiate(attackPrefabToSpawn, transform.position, rotation);
 
-        if (gameSfx != null)
-        {
-            gameSfx.PlayFire();
-        }
+        GameSfx.Instance?.PlayFire();
     }
 
     public void TakeDamage(float damage)
@@ -297,10 +291,7 @@ public class Player : MonoBehaviour
 
         currentHealth = Mathf.Max(0f, currentHealth - damage);
 
-        if (gameSfx != null)
-        {
-            gameSfx.PlayDamage();
-        }
+        GameSfx.Instance?.PlayDamage();
 
         invulnerableUntil = Time.time + invulnerabilityDuration;
 

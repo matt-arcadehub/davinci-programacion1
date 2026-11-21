@@ -46,6 +46,7 @@ public class EnergyOrb : MonoBehaviour
         if (collision.TryGetComponent<Player>(out Player player))
         {
             player.CollectEnergyOrb(energyToRecover);
+            GameSfx.Instance?.PlayEnergyPickup();
             Destroy(gameObject);
         }
     }

@@ -81,6 +81,8 @@ public class SpikesEnemy : Enemy
 
             Instantiate(spikePrefab, transform.position, rotationAngle);
         }
+
+        GameSfx.Instance?.PlayEnemyAttack();
     }
 
     private void OnDrawGizmosSelected()

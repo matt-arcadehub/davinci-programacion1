@@ -989,7 +989,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlitVisual: {fileID: 294780132}
   litVisual: {fileID: 1769410721}
-  gameSfx: {fileID: 576671335}
 --- !u!4 &321794456
 Transform:
   m_ObjectHideFlags: 0
@@ -1819,7 +1818,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlitVisual: {fileID: 2048203947}
   litVisual: {fileID: 566631214}
-  gameSfx: {fileID: 576671335}
 --- !u!58 &536258105
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2170,7 +2168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlitVisual: {fileID: 0}
   litVisual: {fileID: 0}
-  gameSfx: {fileID: 0}
 --- !u!212 &566631217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2259,6 +2256,11 @@ MonoBehaviour:
   fireClip: {fileID: 8300000, guid: eb6a4361941adbe48ae6905013d0f408, type: 3}
   damageClip: {fileID: 8300000, guid: 61ad73ddf6e254049a0da3d2abc9a9cb, type: 3}
   brazierLitClip: {fileID: 8300000, guid: 911696a46806c8c43950e4b26eca109f, type: 3}
+  enemyAttackClip: {fileID: 8300000, guid: 11ad2a92316dfe3439fb5414c03d1ee2, type: 3}
+  enemyHitClip: {fileID: 8300000, guid: 34dc22c32d3479140830ed3fb21bb029, type: 3}
+  enemyDeathClip: {fileID: 8300000, guid: 1bc8bda15ced646419cb50f5e0f3ffb2, type: 3}
+  energyPickupClip: {fileID: 8300000, guid: 5a2a6f4bbe8668e4bb14d185273c3fc6, type: 3}
+  featherPickupClip: {fileID: 8300000, guid: d69fcda84cb0aae4888f680c4c5c0881, type: 3}
   sfxVolume: 0.7
 --- !u!82 &576671336
 AudioSource:
@@ -2844,7 +2846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlitVisual: {fileID: 1630302754}
   litVisual: {fileID: 1793220500}
-  gameSfx: {fileID: 576671335}
 --- !u!4 &839868673
 Transform:
   m_ObjectHideFlags: 0
@@ -5525,7 +5526,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlitVisual: {fileID: 0}
   litVisual: {fileID: 0}
-  gameSfx: {fileID: 0}
 --- !u!212 &1769410723
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5762,7 +5762,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlitVisual: {fileID: 0}
   litVisual: {fileID: 0}
-  gameSfx: {fileID: 0}
 --- !u!212 &1793220502
 SpriteRenderer:
   m_ObjectHideFlags: 0

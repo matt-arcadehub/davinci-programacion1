@@ -42,11 +42,14 @@ public class Enemy : MonoBehaviour
         {
             currentHealth = 0;
 
+            GameSfx.Instance?.PlayEnemyDeath();
             Die();
         }
         else
         {
             currentHealth -= damage;
+
+            GameSfx.Instance?.PlayEnemyHit();
         }
 
         UpdateHealthUI();

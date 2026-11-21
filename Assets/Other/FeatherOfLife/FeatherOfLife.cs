@@ -16,6 +16,7 @@ public class FeatherOfLife : MonoBehaviour
         if (collision.TryGetComponent<Player>(out Player player))
         {
             player.CollectFeatherOfLife();
+            GameSfx.Instance?.PlayFeatherPickup();
             Destroy(gameObject);
         }
     }
