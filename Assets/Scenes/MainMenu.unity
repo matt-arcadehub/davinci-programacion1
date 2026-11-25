@@ -507,15 +507,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Cr\xE9ditos"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
+  m_sharedMaterial: {fileID: 4987876388658891425, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294960864
-  m_fontColor: {r: 0.879, g: 0.9019263, b: 1, a: 1}
+    rgba: 4293656573
+  m_fontColor: {r: 0.9928314, g: 1, b: 0.92, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -722,15 +722,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Salir
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
+  m_sharedMaterial: {fileID: 4987876388658891425, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294960864
-  m_fontColor: {r: 0.879, g: 0.9019263, b: 1, a: 1}
+    rgba: 4293656573
+  m_fontColor: {r: 0.9928314, g: 1, b: 0.92, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -833,8 +833,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100.107506}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 600, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476688973
 MonoBehaviour:
@@ -856,10 +856,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\xEDtulo del juego"
+  m_text: YARDINE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
+  m_sharedMaterial: {fileID: -2579465446521841081, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -883,8 +883,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1127,8 +1127,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Volver al men\xFA"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
+  m_sharedMaterial: {fileID: -2579465446521841081, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1527,17 +1527,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Juego nuevo
+  m_text: Nueva partida
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
+  m_sharedMaterial: {fileID: 4987876388658891425, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294960864
-  m_fontColor: {r: 0.879, g: 0.9019263, b: 1, a: 1}
+    rgba: 4293656573
+  m_fontColor: {r: 0.9928314, g: 1, b: 0.92, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1641,7 +1641,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 400}
+  m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1109726202
 MonoBehaviour:
@@ -1663,17 +1663,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Movimiento: WASD
+  m_text: 'Movimiento: WASD / Flechas / Stick izquierdo
 
     Volar / Aterrizar: F
+    / B
 
-    Interactuar: E
+    Interactuar: E / A
 
-    Lanzar
-    ataque: Space bar'
+    Lanzar ataque: Espacio / RT
+
+    Confirmar:
+    Enter / A'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
+  m_sharedMaterial: {fileID: -2579465446521841081, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1808,8 +1811,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Dise\xF1ado y desarrollado por:\nMat\xEDas Montiel"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
+  m_sharedMaterial: {fileID: -2579465446521841081, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1944,15 +1947,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Prototipo TP1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
+  m_sharedMaterial: {fileID: 4987876388658891425, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294960864
-  m_fontColor: {r: 0.879, g: 0.9019263, b: 1, a: 1}
+    rgba: 4293656573
+  m_fontColor: {r: 0.9928314, g: 1, b: 0.92, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2236,8 +2239,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Volver al men\xFA"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
+  m_sharedMaterial: {fileID: -2579465446521841081, guid: b9acc11bd8c44134096a12129106d5b9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2372,8 +2375,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "C\xF3mo jugar"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
+  m_sharedMaterial: {fileID: 4987876388658891425, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2720,8 +2723,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Cr\xE9ditos"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
+  m_sharedMaterial: {fileID: 4987876388658891425, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3210,7 +3213,7 @@ GameObject:
   - component: {fileID: 2068971354}
   - component: {fileID: 2068971353}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3382,15 +3385,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: "C\xF3mo jugar"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
+  m_sharedMaterial: {fileID: 4987876388658891425, guid: a201eb157310ecc47ba9e27d962b85de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294960864
-  m_fontColor: {r: 0.879, g: 0.9019263, b: 1, a: 1}
+    rgba: 4293656573
+  m_fontColor: {r: 0.9928314, g: 1, b: 0.92, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
