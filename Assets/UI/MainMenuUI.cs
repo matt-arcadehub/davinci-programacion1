@@ -117,19 +117,22 @@ public class MainMenuUI : MonoBehaviour
     }
     private void SetActiveHint(HintType hint)
     {
+        bool isMainMenu = hint == HintType.Select;
+
         if (primaryHintsText != null)
         {
-            primaryHintsText.enabled = hint == HintType.Select;
+            primaryHintsText.enabled = isMainMenu;
         }
 
         if (secondaryHintsText != null)
         {
-            secondaryHintsText.enabled = hint == HintType.Back;
+            secondaryHintsText.enabled = true;
+            secondaryHintsText.text = isMainMenu ? "Esc / B  Salir" : "Esc / B  Volver";
         }
 
         if (backHintButton != null)
         {
-            backHintButton.interactable = hint == HintType.Back;
+            backHintButton.interactable = !isMainMenu;
         }
     }
 
