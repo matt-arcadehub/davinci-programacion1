@@ -1,7 +1,9 @@
+using TMPro;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -12,18 +14,28 @@ public class MainMenuUI : MonoBehaviour
     [Header("Instructions Panel")]
     [SerializeField] private GameObject instructionsPanel;
     [SerializeField] private Button instructionsButton;
-    [SerializeField] private Button instructionsBackButton;
 
     [Header("Credits Panel")]
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private Button creditsButton;
-    [SerializeField] private Button creditsBackButton;
+
+    [Header("Footer Hints")]
+    [SerializeField] private TMP_Text primaryHintsText;
+    [SerializeField] private TMP_Text secondaryHintsText;
+    [SerializeField] private Button backHintButton;
+
+    private enum HintType
+    {
+        Select,
+        Back
+    }
 
     private void Awake()
     {
         if (mainButtons != null)
         {
             mainButtons.SetActive(true);
+            SetActiveHint(HintType.Select);
         }
 
         if (instructionsPanel != null)
@@ -57,7 +69,8 @@ public class MainMenuUI : MonoBehaviour
         mainButtons.SetActive(false);
         instructionsPanel.SetActive(true);
 
-        SelectButton(instructionsBackButton);
+        SetActiveHint(HintType.Back);
+        SelectButton(backHintButton);
     }
 
     public void CloseInstructions()
@@ -65,6 +78,7 @@ public class MainMenuUI : MonoBehaviour
         instructionsPanel.SetActive(false);
         mainButtons.SetActive(true);
 
+        SetActiveHint(HintType.Select);
         SelectButton(instructionsButton);
     }
 
@@ -73,7 +87,8 @@ public class MainMenuUI : MonoBehaviour
         mainButtons.SetActive(false);
         creditsPanel.SetActive(true);
 
-        SelectButton(creditsBackButton);
+        SetActiveHint(HintType.Back);
+        SelectButton(backHintButton);
     }
 
     public void CloseCredits()
@@ -81,6 +96,7 @@ public class MainMenuUI : MonoBehaviour
         creditsPanel.SetActive(false);
         mainButtons.SetActive(true);
 
+        SetActiveHint(HintType.Select);
         SelectButton(creditsButton);
     }
 
@@ -98,5 +114,34 @@ public class MainMenuUI : MonoBehaviour
         if (button == null || EventSystem.current == null) return;
 
         EventSystem.current.SetSelectedGameObject(button.gameObject);
+    }
+    private void SetActiveHint(HintType hint)
+    {
+        if (primaryHintsText != null)
+        {
+            primaryHintsText.enabled = hint == HintType.Select;
+        }
+
+        if (secondaryHintsText != null)
+        {
+            secondaryHintsText.enabled = hint == HintType.Back;
+        }
+
+        if (backHintButton != null)
+        {
+            backHintButton.interactable = hint == HintType.Back;
+        }
+    }
+
+    public void GoBack()
+    {
+        if (instructionsPanel.activeSelf)
+        {
+            CloseInstructions();
+        }
+        else if (creditsPanel.activeSelf)
+        {
+            CloseCredits();
+        }
     }
 }
