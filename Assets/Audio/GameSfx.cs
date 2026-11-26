@@ -3,6 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class GameSfx : MonoBehaviour
 {
+    [Header("UI Sounds")]
+    [SerializeField] private AudioClip uiNavigateClip;
+    [SerializeField] private AudioClip uiConfirmClip;
+    [SerializeField] private AudioClip uiBackClip;
+    public float UiConfirmDuration => uiConfirmClip != null ? uiConfirmClip.length : 0f;
+    public float UiBackDuration => uiBackClip != null ? uiBackClip.length : 0f;
+
     [Header("Audio Clips")]
     [SerializeField] private AudioClip fireClip;
     [SerializeField] private AudioClip damageClip;
@@ -37,6 +44,21 @@ public class GameSfx : MonoBehaviour
         {
             Instance = null;
         }
+    }
+
+    public void PlayUINavigate()
+    {
+        PlayClip(uiNavigateClip);
+    }
+
+    public void PlayUIConfirm()
+    {
+        PlayClip(uiConfirmClip);
+    }
+
+    public void PlayUIBack()
+    {
+        PlayClip(uiBackClip);
     }
 
     public void PlayFire()

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEditor;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private TMP_Text primaryHintsText;
     [SerializeField] private TMP_Text secondaryHintsText;
     [SerializeField] private Button backHintButton;
+
+    private GameObject lastSelectedButton;
+    private bool isLeavingScene;
 
     private enum HintType
     {
@@ -54,18 +59,60 @@ public class MainMenuUI : MonoBehaviour
         SelectButton(newGameButton);
     }
 
+    private void Update()
+    {
+        if (EventSystem.current == null || mainButtons == null || !mainButtons.activeInHierarchy) return;
+
+        GameObject selectedButton = EventSystem.current.currentSelectedGameObject;
+
+        if (selectedButton == lastSelectedButton) return;
+
+        lastSelectedButton = selectedButton;
+
+        if (selectedButton == null) return;
+
+        if (selectedButton.transform.IsChildOf(mainButtons.transform))
+        {
+            GameSfx.Instance?.PlayUINavigate();
+        }
+
+        lastSelectedButton = selectedButton;
+    }
+
     public void StartNewGame()
     {
-        SceneManager.LoadScene("Island_01");
+        if (isLeavingScene) return;
+
+        StartCoroutine(LoadSceneWithSound("Island_01"));
     }
 
     public void OpenPrototype()
     {
-        SceneManager.LoadScene("Prototype_TP1");
+        if (isLeavingScene) return;
+
+        StartCoroutine(LoadSceneWithSound("Prototype_TP1"));
+    }
+
+    private IEnumerator LoadSceneWithSound(string sceneName)
+    {
+        isLeavingScene = true;
+
+        GameSfx.Instance?.PlayUIConfirm();
+
+        float duration = GameSfx.Instance != null ? GameSfx.Instance.UiConfirmDuration : 0f;
+
+        if (duration > 0f)
+        {
+            yield return new WaitForSecondsRealtime(duration);
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 
     public void ShowInstructions()
     {
+        GameSfx.Instance?.PlayUIConfirm();
+
         mainButtons.SetActive(false);
         instructionsPanel.SetActive(true);
 
@@ -84,6 +131,8 @@ public class MainMenuUI : MonoBehaviour
 
     public void ShowCredits()
     {
+        GameSfx.Instance?.PlayUIConfirm();
+
         mainButtons.SetActive(false);
         creditsPanel.SetActive(true);
 
@@ -102,11 +151,30 @@ public class MainMenuUI : MonoBehaviour
 
     public void QuitGame()
     {
-#if UNITY_EDITOR
-        Debug.Log("Salir: disponible en la build.");
-#else
-        Application.Quit();
-#endif
+        if (isLeavingScene) return;
+
+        StartCoroutine(QuitWithSound());
+    }
+
+    private IEnumerator QuitWithSound()
+    {
+        isLeavingScene = true;
+
+        GameSfx.Instance?.PlayUIBack();
+
+        float duration = GameSfx.Instance != null ? GameSfx.Instance.UiBackDuration : 0f;
+
+        if (duration > 0f)
+        {
+            yield return new WaitForSecondsRealtime(duration);
+        }
+
+        #if UNITY_EDITOR
+            Debug.Log("Salir: disponible en la build.");
+            isLeavingScene = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
     private void SelectButton(Button button)
@@ -114,6 +182,7 @@ public class MainMenuUI : MonoBehaviour
         if (button == null || EventSystem.current == null) return;
 
         EventSystem.current.SetSelectedGameObject(button.gameObject);
+        lastSelectedButton = button.gameObject;
     }
     private void SetActiveHint(HintType hint)
     {
@@ -138,6 +207,10 @@ public class MainMenuUI : MonoBehaviour
 
     public void GoBack()
     {
+        if (!instructionsPanel.activeSelf && !creditsPanel.activeSelf) return;
+
+        GameSfx.Instance?.PlayUIBack();
+
         if (instructionsPanel.activeSelf)
         {
             CloseInstructions();
