@@ -38,7 +38,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (currentInteractable == null) return;
 
-        bool canInteract = !IsDialogueOpen && !Flight.IsFlying;
+        bool canInteract = !IsDialogueOpen && !Flight.IsFlying && !player.ControlsLocked;
 
         currentInteractable.SetPromptVisible(canInteract);
 
