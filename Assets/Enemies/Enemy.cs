@@ -1,5 +1,5 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float maxEnergyValueToDrop = 3f;
 
     [Header("UI")]
-    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private Image healthFill;
 
     protected virtual void Start()
     {
@@ -57,14 +57,14 @@ public class Enemy : MonoBehaviour
 
     protected void UpdateHealthUI()
     {
-        if (healthText == null)
+        if (healthFill == null)
         {
             GameDebugLogger.LogWarning(gameObject.name, "No tiene este prefab de UI.");
 
             return;
         }
 
-        healthText.text = $"Life: {currentHealth}/{maxHealth}";
+        healthFill.fillAmount = maxHealth > 0f ? Mathf.Clamp01(currentHealth / maxHealth) : 0f;
     }
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {

@@ -1,54 +1,71 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private Player player;
-    [SerializeField] private TextMeshProUGUI healthText;
-    [SerializeField] private TextMeshProUGUI energyText;
 
-    void Start()
+    [Header("HUD")]
+    [SerializeField] private GameObject playerHUD;
+    [SerializeField] private Image[] healthFeathers;
+    [SerializeField] private Image energyFill;
+
+    private void OnEnable()
     {
+        if (player != null)
+        {
+            player.Died += HideHUD;
+        }
+    }
 
+    private void OnDisable()
+    {
+        if (player != null)
+        {
+            player.Died -= HideHUD;
+        }
+    }
+
+    private void HideHUD()
+    {
+        if (playerHUD != null)
+        {
+            playerHUD.SetActive(false);
+        }
     }
 
     void Update()
     {
-        UpdateHealthText();
-        UpdateEnergyText();
+        UpdateHealth();
+        UpdateEnergy();
     }
-    void UpdateHealthText()
+
+    private void UpdateHealth()
     {
-        if (healthText == null) return;
+        if (player == null) return;
 
-        float currentHealth = 0f;
-        float maxHealth = 0f;
+        float currentHealth = player.GetCurrentHealth();
 
-        if (player != null)
+        for (int i = 0; i < healthFeathers.Length; i++)
         {
-            currentHealth = player.GetCurrentHealth();
-            maxHealth = player.GetMaxHealth();
-        }
+            Image feather = healthFeathers[i];
 
-        healthText.text = $"Vida: {currentHealth} / {maxHealth}";
+            if (feather == null) continue;
+
+            Color color = feather.color;
+            color.a = currentHealth >= i + 1 ? 1f : 0.25f;
+
+            feather.color = color;
+        }
     }
 
-    void UpdateEnergyText()
+    private void UpdateEnergy()
     {
-        if (energyText == null) return;
+        if (player == null || energyFill == null) return;
 
-        float currentEnergy = 0f;
-        float maxEnergy = 0f;
+        float maxEnergy = player.GetMaxEnergy();
 
-        if (player != null)
-        {
-            currentEnergy = player.GetCurrentEnergy();
-            maxEnergy = player.GetMaxEnergy();
-        }
- 
-        energyText.text = $"Energía: {currentEnergy:0.0} / {maxEnergy:0.0}";
+        energyFill.fillAmount = maxEnergy > 0f ? Mathf.Clamp01(player.GetCurrentEnergy() / maxEnergy) : 0f;
     }
-
-
 }
