@@ -22,7 +22,7 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private Button creditsButton;
 
     [Header("Footer Hints")]
-    [SerializeField] private TMP_Text primaryHintsText;
+    [SerializeField] private GameObject primaryHintGroup;
     [SerializeField] private TMP_Text secondaryHintsText;
     [SerializeField] private Button backHintButton;
 
@@ -188,15 +188,14 @@ public class MainMenuUI : MonoBehaviour
     {
         bool isMainMenu = hint == HintType.Select;
 
-        if (primaryHintsText != null)
+        if (primaryHintGroup != null)
         {
-            primaryHintsText.enabled = isMainMenu;
+            primaryHintGroup.SetActive(isMainMenu);
         }
 
         if (secondaryHintsText != null)
         {
-            secondaryHintsText.enabled = true;
-            secondaryHintsText.text = isMainMenu ? "Esc / B  Salir" : "Esc / B  Volver";
+            secondaryHintsText.text = isMainMenu ? "Salir" : "Volver";
         }
 
         if (backHintButton != null)
