@@ -3,7 +3,6 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     [Header("Visual States")]
-    [SerializeField] private GameObject inactiveVisual;
     [SerializeField] private GameObject activeVisual;
 
     [Header("Victory UI")]
@@ -38,11 +37,6 @@ public class Portal : MonoBehaviour
 
     private void UpdateVisuals()
     {
-        if (inactiveVisual != null)
-        {
-            inactiveVisual.SetActive(!IsActive);
-        }
-
         if (activeVisual != null)
         {
             activeVisual.SetActive(IsActive);

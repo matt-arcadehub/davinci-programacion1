@@ -3,7 +3,6 @@ using UnityEngine;
 public class Brazier : MonoBehaviour
 {
     [Header("Visual States")]
-    [SerializeField] private GameObject unlitVisual;
     [SerializeField] private GameObject litVisual;
 
     public bool IsLit { get; private set; }
@@ -44,11 +43,6 @@ public class Brazier : MonoBehaviour
 
     private void UpdateVisuals()
     {
-        if (unlitVisual != null)
-        {
-            unlitVisual.SetActive(!IsLit);
-        }
-
         if (litVisual != null)
         {
             litVisual.SetActive(IsLit);
