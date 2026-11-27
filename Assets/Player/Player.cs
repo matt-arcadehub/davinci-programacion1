@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
     public bool FireUnlocked => fireUnlocked;
     [SerializeField] private GameObject attackPrefabToSpawn;
     [SerializeField] private float attackEnergyCost = 1f;
+    [SerializeField, Min(0f)] private float fireballCooldown = 1f;
+
+    private float nextFireTime;
+    public float FireCooldownRemaining01 => fireballCooldown > 0f ? Mathf.Clamp01((nextFireTime - Time.time) / fireballCooldown) : 0f;
 
     [Header("Damage Settings")]
     [SerializeField, Min(0f)]
@@ -170,9 +174,7 @@ public class Player : MonoBehaviour
 
         if (playerVisual != null)
         {
-            float targetHeight = playerFlight != null && playerFlight.IsFlying
-                ? flightVisualHeight
-                : 0f;
+            float targetHeight = playerFlight != null && playerFlight.IsFlying ? flightVisualHeight : 0f;
 
             currentVisualHeight = Mathf.MoveTowards(
                 currentVisualHeight,
@@ -256,6 +258,8 @@ public class Player : MonoBehaviour
     {
         if (!fireUnlocked) return;
 
+        if (Time.time < nextFireTime) return;
+
         if (playerFlight != null && !playerFlight.IsFlying) return;
 
         if (currentEnergy < attackEnergyCost)
@@ -277,6 +281,8 @@ public class Player : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
 
         Instantiate(attackPrefabToSpawn, transform.position, rotation);
+
+        nextFireTime = Time.time + fireballCooldown;
 
         GameSfx.Instance?.PlayFire();
     }

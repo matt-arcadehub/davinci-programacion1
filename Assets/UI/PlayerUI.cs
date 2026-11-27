@@ -11,6 +11,10 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Image[] healthFeathers;
     [SerializeField] private Image energyFill;
 
+    [Header("Skills HUD")]
+    [SerializeField] private GameObject fireballSkill;
+    [SerializeField] private Image fireballCooldownOverlay;
+
     private void OnEnable()
     {
         if (player != null)
@@ -39,6 +43,7 @@ public class PlayerUI : MonoBehaviour
     {
         UpdateHealth();
         UpdateEnergy();
+        UpdateFireballSkill();
     }
 
     private void UpdateHealth()
@@ -67,5 +72,21 @@ public class PlayerUI : MonoBehaviour
         float maxEnergy = player.GetMaxEnergy();
 
         energyFill.fillAmount = maxEnergy > 0f ? Mathf.Clamp01(player.GetCurrentEnergy() / maxEnergy) : 0f;
+    }
+
+    private void UpdateFireballSkill()
+    {
+        if (fireballSkill == null) return;
+
+        bool unlocked = player != null && player.FireUnlocked;
+
+        if (fireballSkill.activeSelf != unlocked)
+        {
+            fireballSkill.SetActive(unlocked);
+        }
+
+        if (!unlocked || fireballCooldownOverlay == null) return;
+
+        fireballCooldownOverlay.fillAmount = player.FireCooldownRemaining01;
     }
 }
